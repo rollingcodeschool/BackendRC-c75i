@@ -14,4 +14,10 @@ app.use(cors()); //permite conexiones remotas
 app.use(morgan('dev')); //nos da informacion extra en la terminal
 app.use(express.json()); //permite interpretar los datos en formato json
 app.use(express.urlencoded({extended:true})); //ayuda a intepretar los datos del body del request
+// todo: configurar index.html
+
 //3- configurar las rutas
+app.get('/nuevo/producto',(req, res)=>{
+ console.log('aqui obtener la lista de todos los productos');
+ res.send('Aqui enviaremos la lista de productos')
+})
