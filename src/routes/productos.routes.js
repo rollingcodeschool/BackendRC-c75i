@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { crearProducto, listarProductos } from "../controllers/productos.controllers.js";
+import { crearProducto, listarProductos, obtenerProducto } from "../controllers/productos.controllers.js";
 
 const router = Router();
 
@@ -8,5 +8,6 @@ const router = Router();
 //     res.send('Aqui enviaremos la lista de productos')
 //    })
 router.route('/productos').get(listarProductos).post(crearProducto)
+router.route('/productos/:id').get(obtenerProducto)
 
 export default router
