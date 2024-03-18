@@ -23,6 +23,23 @@ const productoSchema = new Schema({
                return pattern.test(dato)
             }
         }
-    }
+    },
     // agregar a el schema las propiedades faltantes
+    categoria:{
+        type:String,
+        required:true,
+        enum: ['Infusiones', 'Batidos','Dulce', 'Salado']
+    },
+    descripcion_breve:{
+        type:String,
+        required:true,
+        minLength:10,
+        maxLength:50
+    },
+    descripcion_amplia:{
+        type:String,
+        required:true,
+        minLength:30,
+        maxLength:300
+    }
 })
