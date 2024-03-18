@@ -9,6 +9,6 @@ mongoose.connect(mongoURI);
 const datosConexion = mongoose.connection;
 
 datosConexion.once('open', ()=>{
-    console.log('BD conectada')
+    console.info('BD conectada')
 })
 
