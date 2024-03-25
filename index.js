@@ -3,6 +3,7 @@ import 'dotenv/config'; //permite procesar variables de entorno
 import cors from 'cors';
 import morgan from 'morgan';
 import productosRouter from './src/routes/productos.routes.js';
+import usuarioRouter from './src/routes/usuario.routes.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import './src/database/database.js'
@@ -29,3 +30,4 @@ app.use(express.static(path.join(__dirname, '/public')))
 // })
 // http://localhost:4001/api/nuevo/producto
 app.use('/api', productosRouter)
+app.use('/api/usuario', usuarioRouter)
