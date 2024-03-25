@@ -3,7 +3,22 @@ import bcrypt from 'bcrypt'
 
 export const login = async (req, res) => {
   try {
-   
+   //tomar el email y password
+   const {email, password} =  req.body;
+   //verificar el email, si existe continuo con la siguiente instruccion, si no existe el mail responder con un error. status 400
+   const usuarioBuscado = await Usuario.findOne({email});
+   if(!usuarioBuscado) {
+    return res.status(400).json({mensaje: 'Correo o password incorrecto - correo'})
+   } 
+   //verificar la contraseña
+   const passValido = bcrypt.compareSync(password, usuarioBuscado.password);
+   //si esta mal la contraseña responder un status 400
+   if(!passValido){
+    return res.status(400).json({mensaje: 'Correo o password incorrecto - password'})
+   }
+    //caso contrario responder con un mensaje de exito status 200
+   res.status(200).json({mensaje:'El usuario existe', email: usuarioBuscado.email})
+
   } catch (error) {
     console.error(error);
     res.status(500).json({
